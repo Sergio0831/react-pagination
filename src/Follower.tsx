@@ -1,6 +1,12 @@
 import React from "react";
 
-const Follower = ({ avatar_url, html_url, login }) => {
+type FollowerProps = {
+  avatar_url: string;
+  html_url: string;
+  login: string;
+};
+
+const Follower = ({ avatar_url, html_url, login }: FollowerProps) => {
   return (
     <article className='card'>
       <img src={avatar_url} alt={login} />

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useFetch } from "./useFetch";
 import Follower from "./Follower";
-function App() {
+
+const App = () => {
   const { loading, data } = useFetch();
-  const [page, setPage] = useState(0);
-  const [followers, setFollowers] = useState([]);
+  const [page, setPage] = useState<number>(0);
+  const [followers, setFollowers] = useState<[]>([]);
 
   useEffect(() => {
     if (loading) return;
     setFollowers(data[page]);
   }, [loading, page, data]);
 
-  const handlePage = (index) => {
+  const handlePage = (index: number) => {
     setPage(index);
   };
 
@@ -43,7 +44,7 @@ function App() {
       </div>
       <section className='followers'>
         <div className='container'>
-          {followers.map((follower) => (
+          {followers.map((follower: any) => (
             <Follower key={follower.id} {...follower} />
           ))}
         </div>
@@ -69,6 +70,6 @@ function App() {
       </section>
     </main>
   );
-}
+};
 
 export default App;
